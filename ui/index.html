@@ -57,6 +57,9 @@
                         <div class="ipad__lockScreen--dateContent">Monday, June 6</div>
                         <div class="ipad__lockScreen--timeContent">9:41</div>
                     </div>
+                    <div class="ipad__homeIndicator--content">
+                        <span class="fadeText">Press the screen to unlock</span>
+                    </div>                    
                     <div class="ipad__homeIndicator"></div>
                 </div>
                 <div class="ipad__mainScreen animate__animated" style="display: none;">
@@ -142,7 +145,18 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./app.js"></script>
+    <script type="text/javascript">
+        let tl = gsap.timeline({ paused: true });
+            tl.fromTo('.fadeText', { clipPath: 'polygon(50% 0%, 50% 100%, 50% 100%, 50% 0%)' }, { clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)', duration: 1.5, ease: 'power4.out' })
+
+            $('.ipad__lockScreen').mouseenter(function() {
+                tl.restart();
+            }).mouseleave(function() {
+                tl.reverse();
+            });
+    </script>
 </body>
 </html>

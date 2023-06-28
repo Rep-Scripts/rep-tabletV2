@@ -57,6 +57,5 @@ $(function() {
             $(".ipad__mainScreen").addClass("custom-fadeIn").show();
         });
     });
-    
-    
+
 });

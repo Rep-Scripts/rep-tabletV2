@@ -538,3 +538,13 @@ body {
     animation-name: fadeIn;
     animation-duration: 0.35s;
 }
+
+.ipad__homeIndicator--content {
+    position: absolute;
+    bottom: 1vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--main-white-color);
+    font-size: 1.4vh;
+    font-weight: 400;
+}
