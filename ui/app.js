@@ -1,12 +1,21 @@
+REP = {};
+REP.Tablet = {};
+REP.Tablet.Functions = {};
+REP.Tablet.Animations = {};
+REP.Tablet.Notifications = {};
+REP.Tablet.Notifications.Custom = {};
+
 let clickCount = 0;
 
 $(function() {
+    var isLoggedIn = localStorage.getItem('isLoggedIn');
+    $(".ipad__jobCenter--mainBody").hide();
+    $("#email, #password").prop('readonly', true);
     $.getJSON('http://ip-api.com/json', function(data) {
-        var timezone = data.timezone;
-        var city = data.city;
-        $.getJSON('http://worldtimeapi.org/api/timezone/' + timezone, function(timeData) {
+        $.getJSON('http://worldtimeapi.org/api/timezone/' + data.timezone, function(timeData) {
             var datetime = new Date(timeData.datetime);
             
+            // Time processing
             var ampm = datetime.getHours() >= 12 ? 'PM' : 'AM';
             var hours24 = datetime.getHours();
             var timeString24 = hours24 + ":" + ("0" + datetime.getMinutes()).slice(-2);
@@ -21,7 +30,8 @@ $(function() {
             var dateFull = daysOfWeekFull[datetime.getDay()] + ', ' + monthsFull[datetime.getMonth()] + ' ' + datetime.getDate();
             var weekMonthLeft = daysOfWeekShort[datetime.getDay()] + ' ' + monthsShort[datetime.getMonth()];
             var dateLeft = datetime.getDate();
-        
+            
+            // DOM updates
             $('.ipad__timer').text(timeString24);
             $('.ipad__lockScreen--timeContent').text(timeString24);
             $('.ipad__lockScreen--leftTimer').text(timeString24WithAmPm);
@@ -29,7 +39,147 @@ $(function() {
             $('.ipad__lockScreen--dateContent').text(dateFull);
             $('.ipad__lockScreen--weekMonthLeft').text(weekMonthLeft);
             $('.ipad__lockScreen--dateLeft').text(dateLeft);
-            $('.ipad__lockScreen--leftYourLocation').text(city);
+            $('.ipad__lockScreen--leftYourLocation').text(data.city);
+        });
+    });
+
+    // if (isLoggedIn) {
+
+    // } else {
+
+    // }
+
+    $(".ipad__jobCenter--getStarted--button").click(function(e) {
+        e.preventDefault();
+        var $button = $(this);
+        var $content = $button.find(".ipad__jobCenter--getStarted--btn-content, img");
+        var $loader = $button.find(".loader");
+        var $getStartedScreen = $(".ipad__jobCenter--getStarted");
+        var $loginScreen = $(".ipad__jobCenter--loginScreen");
+    
+        // Disable the button
+        $button.css({cursor: "default"});
+        $button.off("click");
+    
+        // Create the animation
+        var tl = gsap.timeline();
+        tl.to($button, {
+            width: "12.5vh",
+            duration: 0.6,
+            ease: "power2.inOut",
+        })
+        .to($content, {
+            opacity: 0,
+            duration: 0.1,
+            onComplete: function() {
+                $content.hide();
+                $loader.show();
+            }
+        }, 0);
+    
+        // Determine which button was clicked
+        if ($button.attr('id') == 'getStarted-btn') {
+            // Do something for login-btn
+            tl.add(function() {
+                $loader.hide();
+                $loginScreen.show();
+            
+                gsap.to($getStartedScreen, {
+                    x: "-100%",
+                    duration: 0.75,
+                    ease: "power4.inOut",
+                });
+            
+                gsap.fromTo($loginScreen, {
+                    x: "100%",
+                }, {
+                    x: "0",
+                    duration: 0.75,
+                    ease: "power4.inOut",
+                });
+    
+                // animate the login content after 1 second delay
+                setTimeout(function() {
+                    gsap.to([".ipad__jobCenter--loginHeader", ".ipad__jobCenter--loginContent--item"], { opacity: 1, duration: 0 });
+
+                    gsap.from(".ipad__jobCenter--loginHeader", {
+                        y: 100, 
+                        opacity: 0, 
+                        ease: "power2.out", 
+                        duration: 1,
+                    });
+        
+                    gsap.from(".ipad__jobCenter--loginContent--item", {
+                        y: 100, 
+                        opacity: 0,
+                        stagger: 0.2, 
+                        ease: "power2.out", 
+                        duration: 1,
+                    });
+                }, 500); // 1 second delay before animating the login content
+            }, "+=4");
+        } else if ($button.attr('id') == 'login-btn') {
+
+        }
+    });
+
+    $("#login-btn").click(function(e) {
+        e.preventDefault();
+        let email = 'repscripts2023@gmail.com';
+        let password = 'rpsc2023123456780';
+        REP.Tablet.Functions.typeWriter(email, '#email', function() {
+            REP.Tablet.Functions.typeWriter(password, '#password', function() {
+                // Wait for 1 second after typing is done
+                setTimeout(function() {
+                    // animate the login header moving up and out of sight
+                    gsap.to(".ipad__jobCenter--loginHeader", {
+                        y: -100, 
+                        autoAlpha: 0,
+                        ease: "power2.out", 
+                        duration: 1,
+                    });
+    
+                    // animate the login content moving up and out of sight
+                    gsap.to(".ipad__jobCenter--loginContent--item", {
+                        y: -100, 
+                        autoAlpha: 0,
+                        stagger: 0.2, 
+                        ease: "power2.out", 
+                        duration: 1,
+                        onComplete: function() {
+                            gsap.to(".ipad__jobCenter--loginScreen", {
+                                autoAlpha: 0, // fade out effect
+                                ease: "power2.out", 
+                                duration: .8,
+                                onComplete: function() {
+                                    const welcome = $(".ipad__jobCenter--mainWelcome");
+                                    let textContent = "Welcome Back!";
+                                    welcome.text(textContent);
+                                    let splitText = textContent.split("").map(letter => `<span>${letter}</span>`).join("");
+                                    welcome.html(splitText);                               
+                                    $(".ipad__jobCenter--loginScreen").hide();
+                                    gsap.to([".ipad__jobCenter--mainWelcome span"], { opacity: 1, duration: 0, textTransform: "capitalize" });
+                                    gsap.from(".ipad__jobCenter--mainWelcome span", {
+                                        y: -20,
+                                        scale: 2,
+                                        autoAlpha: 0,
+                                        opacity: 1,
+                                        stagger: 0.1,
+                                        ease: "back.out(1.4)",
+                                        onComplete: function() {
+                                            gsap.to(".ipad__jobCenter--mainWelcome", { autoAlpha: 0, duration: 0.5, delay: 1.5,
+                                                onComplete: function() {
+                                                    $(".ipad__jobCenter--mainBody").show();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }                                
+                            });
+                        }
+                    });
+                }, 1000); // Delay for 1 second
+            });
         });
     });
 
@@ -42,6 +192,7 @@ $(function() {
                 $(this).one('animationend', function(){
                     $(".ipad__lockScreen").removeClass("custom-zoomOut").hide();
                     $(".ipad__mainScreen").addClass("custom-fadeIn").show();
+                     REP.Tablet.Functions.animateMainScreen();
                 });
         
                 clickCount = 0;
@@ -55,7 +206,89 @@ $(function() {
         $(".ipad__lockScreen").one('animationend', function(){
             $(".ipad__lockScreen").removeClass("custom-fadeOutUp").hide();
             $(".ipad__mainScreen").addClass("custom-fadeIn").show();
+             REP.Tablet.Functions.animateMainScreen();
         });
     });
 
+    $(".ipad__header").on("click", function() {
+        if (!$(".ipad__lockScreen").is(":visible")) {
+            clickCount++;
+            if (clickCount == 2) {
+                $(".ipad__notifyScreen--wrapper").show().animate({top: '50%'}, 800);
+                clickCount = 0;
+            }
+        }
+    });
+
+    $(".ipad__notifyScreen").on("dblclick", function() {
+        $(".ipad__notifyScreen--wrapper").animate({top: '-100%'}, 800);
+        setTimeout(() => {
+            $(".ipad__notifyScreen--wrapper").hide();
+        }, 800)
+         REP.Tablet.Functions.animateMainScreen();
+    });
+
+    $('.appIcon-wrapper').on('mousedown', function() {
+        $(this).children('.appIcon-overlay').css('opacity', '1');
+    });
+    
+    $('.appIcon-wrapper').on('mouseup', function() {
+        $(this).children('.appIcon-overlay').css('opacity', '0');
+    });
+
+    $('.appIcon-wrapper').on('mouseleave', function() {
+        $(this).children('.appIcon-overlay').css('opacity', '0');
+    });
+    
+    REP.Tablet.Functions.animateMainScreen = () => {
+        var mainScreenElements = document.querySelector('.ipad__mainScreen--appsList');
+        var dockWrapper = document.querySelector('.ipad__dockWrapper');
+        gsap.set(mainScreenElements, { scale: 1.2 });
+        gsap.to(mainScreenElements, { scale: 1, duration: 1, ease: "power2.out", stagger: 0.05 });
+        gsap.from(dockWrapper, { y: '100%', duration: 1, ease: "power2.out" });
+    };
+    
+    $(".btn-ripple").click(function(e) {
+        let x_coord = e.clientX;
+        let y_coord = e.clientY;
+    
+        let btn_top_pos = $(this).offset().top;
+        let btn_left_pos = $(this).offset().left;
+    
+        let x = x_coord - btn_left_pos;
+        let y = y_coord - btn_top_pos;
+    
+        let span = $("<span></span>").addClass("ripple").css({
+          top: y + "px",
+          left: x + "px",
+        });
+    
+        $(this).append(span);
+    
+        setTimeout(() => {
+          span.remove();
+        }, 500);
+    });
+                          
+    REP.Tablet.Functions.typeWriter = (text, elemId, callback) => {
+        let i = 0;
+        let $elem = $(elemId);
+    
+        $elem.css("border-bottom", ".1vh solid #1BB3F9");
+    
+        let interval = setInterval(function() {
+            if (i < text.length) {
+                $elem.val($elem.val() + text.charAt(i));
+                i++;
+            } else {
+                clearInterval(interval);
+    
+                $elem.css("border-bottom", ".1vh solid var(--main-white-color)");
+    
+                if (callback) callback();
+            }
+        }, 60);
+    };
+    
 });
+

@@ -1,0 +1,4 @@
+;/*FB_PKG_DELIM*/
+
+__d("LSVerifyAndUpsertThreadQueueSequenceID",[],(function(a,b,c,d,e,f){function a(){var a=arguments,b=a[a.length-1];b.n;var c=[];return b.resolve(c)}b=a;f["default"]=b}),66);
+__d("LSVerifyThreadPendingLazyLoading",[],(function(a,b,c,d,e,f){function a(){var a=arguments,b=a[a.length-1];b.n;var c=[];return b.seq([function(c){return b.fe(b.db.table(13).fetch([[[a[0],b.i64.cast([2328,1316134911])]]]),function(c){var d=c.item;return b.fe(b.ftr(b.db.table(13).fetch([[[d.threadKey,d.minTimestampMs,d.minMessageId]]]),function(a){return b.i64.eq(a.threadKey,d.threadKey)&&b.i64.eq(b.i64.cast([0,0]),b.i64.cast([0,0]))&&b.i64.eq(a.minTimestampMs,d.minTimestampMs)&&a.minMessageId===d.minMessageId}),function(b){var c=b.update;b.item;return c({minTimestampMs:a[2],minMessageId:a[1]})})})},function(a){return b.resolve(c)}])}b=a;f["default"]=b}),66);

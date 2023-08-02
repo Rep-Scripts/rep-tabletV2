@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/7.4.1/smooth-scrollbar.css">
     <link rel="stylesheet" href="./style.css">
     <title>Rep Tablet Version 2</title>
 </head>
@@ -62,101 +64,342 @@
                     </div>                    
                     <div class="ipad__homeIndicator"></div>
                 </div>
-                <div class="ipad__mainScreen animate__animated" style="display: none;">
-                    <div class="ipad__mainScreen--appsList">
-                        <div class="row">
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/faceTimeIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">FaceTime</div>
+                <!--  -->
+                <div class="ipad__notifyScreen--wrapper" style="display: none;">
+                    <div class="ipad__notifyScreen animate__animated">
+                        <div class="ipad__lockScreen--center">
+                            <div class="ipad__lockScreen--dateContent">Monday, June 6</div>
+                            <div class="ipad__lockScreen--timeContent">9:41</div>
+                        </div>
+                        <div class="ipad__notifyScreen--body">
+                            <div class="ipad__notifyScreen--header">
+                                <div class="ipad__notifyScreen--header-title">Notifications center</div>
+                                <div class="ipad__notifyScreen--header-action">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    <p>Delete All</p>
+                                </div>
                             </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/calendarIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Calendar</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/clockIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Clock</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/homeIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Home</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/cameraIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Camera</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/settingsIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Settings</div>
+                            <div class="ipad__notifyScreen--list" id="myScroolbar2">
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-1s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight animate__animated animate__fadeInUp animate__delay-2s">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-3s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight animate__animated animate__fadeInUp animate__delay-4s">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-5s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-6s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-7s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-8s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-9s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-7s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-8s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-9s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-10s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-11s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
+                                <div class="ipad__notifyScreen--item animate__animated animate__fadeInUp animate__delay-12s">
+                                    <div class="ipad__notifyScreen--itemLeft">
+                                        <div class="ipad__notifyScreen--appIcon"></div>
+                                        <div class="ipad__notifyScreen--itemContent">
+                                            <div class="ipad__notifyScreen--itemContent-title">Job Center</div>
+                                            <div class="ipad__notifyScreen--itemContent-description">You have 3 new jobs</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipad__notifyScreen--itemRight">
+                                        <div class="ipad__notifyScreen--itemRight-time">9:41 AM</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/remindersIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Reminders</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/podcastsIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Podcasts</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/healthIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Health</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/walletsIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Wallet</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/mapsIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Maps</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/appStoreIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">App Store</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/booksIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">Books</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/tvIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">TV</div>
-                            </div>
-                            <div class="ipad__mainScreen--appsItem">
-                                <img src="./imgs/appIcons/newsIcon.png" alt="" class="apps__icon">
-                                <div class="ipad__mainScreen-appContent">News</div>
-                            </div>
-                        </div>
-                        
                     </div>
-                    <div class="ipad__dockWrapper">
-                        <img src="./imgs/appIcons/messageIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/safariIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/musicIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/mailIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/filesIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/photosIcon.png" alt="" class="apps__icon">
-                        <img src="./imgs/appIcons/notesIcon.png" alt="" class="apps__icon">
+                </div>
+                <div class="ipad__mainScreen animate__animated">
+                    <div class="ipad__mainScreen--wrapper">
+                        <div class="ipad__mainScreen--appsList">
+                            <div class="row">
+                                <div class="ipad__mainScreen--appsItem">
+                                    <div class="appIcon-wrapper">
+                                        <img src="./imgs/appIcons/newsIcon.png" alt="" class="apps__icon" id="jobCenter">
+                                        <div class="appIcon-overlay"></div>
+                                    </div>
+                                    <div class="ipad__mainScreen-appContent">Job Center</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ipad__dockWrapper">
+                            <div class="appIcon-wrapper">
+                                <img src="./imgs/appIcons/messageIcon.png" alt="" class="apps__icon" id="message">
+                                <div class="appIcon-overlay"></div>
+                            </div>
+                            <div class="appIcon-wrapper">
+                                <img src="./imgs/appIcons/settingsIcon.png" alt="" class="apps__icon" id="settings">
+                                <div class="appIcon-overlay"></div>
+                            </div>
+                            <div class="appIcon-wrapper">
+                                <img src="./imgs/appIcons/photosIcon.png" alt="" class="apps__icon" id="photos">
+                                <div class="appIcon-overlay"></div>
+                            </div>
+                            <!-- <img src="./imgs/appIcons/musicIcon.png" alt="" class="apps__icon"> -->
+                            <!-- <img src="./imgs/appIcons/mailIcon.png" alt="" class="apps__icon">
+                            <img src="./imgs/appIcons/filesIcon.png" alt="" class="apps__icon">
+                            <img src="./imgs/appIcons/notesIcon.png" alt="" class="apps__icon"> -->
+                        </div>
+                    </div>
+                    <div class="ipad__jobCenter--screen" id="jobCenterApp" style="display: none;">
+                        <div class="ipad__jobCenter--wrapper animate__animated">
+                            <div class="ipad__jobCenter--getStarted">
+                                <div class="getStarted__wrapper">
+                                    <div class="ipad__jobCenter--getStarted--content">Welcome to <span>Rep Job Center.</span> Your gateway to exciting opportunities and career growth</div>
+                                    <div class="ipad__jobCenter--getStarted--button btn-ripple" id="getStarted-btn">
+                                        <div class="ipad__jobCenter--getStarted--btn-content">Get started</div>
+                                        <img src="./imgs/icons/arrowIcon.png" alt="">
+                                        <div class="loader animate__animated animate__fadeIn" style="display: none;"></div>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div class="ipad__jobCenter--loginScreen" style="display: none;">
+                                <div class="ipad__jobCenter--loginWrapper">
+                                    <div class="ipad__jobCenter--loginHeader">Sign In</div>
+                                    <div class="ipad__jobCenter--loginContent">
+                                        <div class="ipad__jobCenter--loginContent--item">
+                                            <i class="fa-solid fa-user"></i>
+                                            <!-- <div class="ipad__jobCenter--loginContent--item--label">Email</div> -->
+                                            <input type="text" class="ipad__jobCenter--loginContent--item--input" id="email" placeholder="Your Email" autocomplete="off">
+                                        </div>
+                                        <div class="ipad__jobCenter--loginContent--item">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <!-- <div class="ipad__jobCenter--loginContent--item--label">Password</div> -->
+                                            <input type="password" class="ipad__jobCenter--loginContent--item--input" id="password" placeholder="Password">
+                                        </div>
+                                        <div class="ipad__jobCenter--loginContent--item" style="margin-top: 2.4vh;">
+                                            <div class="ipad__jobCenter--getStarted--button btn-ripple" id="login-btn">
+                                                <div class="ipad__jobCenter--getStarted--btn-content">Login</div>
+                                                <img src="./imgs/icons/arrowIcon.png" alt="">
+                                                <div class="loader animate__animated animate__fadeIn" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ipad__jobCenter--mainScreen">
+                                <div class="ipad__jobCenter--mainWrapper">
+                                    <div class="ipad__jobCenter--mainWelcome"></div>
+                                    <div class="ipad__jobCenter--mainBody">
+                                        <div class="ipad__jobCenter--header">
+                                            <div class="ipad__jobCenter--header-left animate__animated animate__fadeInLeft">Hi, <span>Hwan Jr</span> 👋</div>
+                                            <div class="ipad__jobCenter--header-right animate__animated animate__fadeInRight">
+                                                 <img src="./imgs/notifyIcon.png" alt="" class="notify__icon">
+                                                <img src="./imgs/avatar.png" alt="" class="user__avatar">
+                                            </div>
+                                        </div>
+                                        <div class="ipad__jobCenter--filterWrapper">
+                                            <div class="ipad__jobCenter--filterContent animate__animated animate__fadeInUp animate__delay-2s">Find Your Jobs</div>
+                                            <div class="ipad__jobCenter--filterRight animate__animated animate__fadeInUp animate__delay-2s">
+                                                <div class="searchInput">
+                                                    <img src="./imgs/searchIcon.png" alt="" class="search__icon">
+                                                    <input type="text" placeholder="Search for jobs..." id="searchJobs" name="searchJobs" autocomplete="off">
+                                                </div>
+                                                <div class="refresh__btn">
+                                                    <i class="fa-solid fa-rotate-right"></i>
+                                                </div>
+                                                <div class="favorite__btn">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ipad__jobCenter--mainList" id="myScroolbar">
+                                            <p id="noJobMessage" style="display: none;">No job exists...</p>
+                                            <p id="noFavJobMessage" style="display: none;">No job is favorited...</p>
+                                        </div>
+                                        <div class="fadeBottom"></div>
+                                    </div>
+                                </div>
+                                <div class="ipad__jobCenter--groupWrapper">
+                                    
+                                </div>
+                                <div class="ipad__jobCenter--preloadWrapper" style="display: none;">
+                                    <div class="loader"></div>
+                                    <div class="loader__content">Fetching Groups Data
+                                        <span class="ellipsis-loader">
+                                            <span class="dot dot-1"></span>
+                                            <span class="dot dot-2"></span>
+                                            <span class="dot dot-3"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>                                 
+                            <div class="ipad__jobCenter--loading">
+                                <svg id="logoLoading" viewBox="0 0 443 452" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M402.926 443.012C282.018 453.973 160.368 453.973 39.4596 443.012C17.6474 441.043 0 421.322 0 399.458V35.7958C0 13.9225 17.6474 -1.80285 39.4596 0.166419C160.368 11.1271 282.018 11.1271 402.926 0.166419C424.738 -1.75482 442.385 13.9225 442.385 35.7958V399.458C442.385 421.322 424.738 441.053 402.926 443.012Z" fill="#145FFF"/>
+                                    <path d="M306.347 275.249L302.747 275.14L305.205 277.772C332.189 306.667 359.145 335.025 386.074 362.845C357.996 365.151 329.897 366.869 301.777 367.998C274.815 338.379 247.853 308.215 220.89 277.507L220.442 276.997L219.764 276.997C207.336 276.99 194.909 276.865 182.482 276.622L180.948 276.592L180.953 278.126L181.208 369.215C156.707 368.726 132.221 367.792 107.749 366.414V213.024C126.378 214.081 145.03 214.874 163.707 215.404L167.093 215.5L164.889 212.928C128.672 170.683 92.5044 127.466 56.3856 83.2778C72.672 84.6071 88.9668 85.744 105.27 86.6886L105.27 86.6886C118.158 87.432 131.052 88.0505 143.953 88.544C196.547 90.5564 249.119 90.5147 301.669 88.419L301.609 86.9203L301.669 88.419C319.345 87.7135 334.171 93.0336 346.264 104.502C358.362 115.976 364.413 130.274 364.413 147.679L364.413 147.685C364.49 168.086 364.56 188.487 364.624 208.887C364.538 226.22 360.372 242.018 349.641 254.281L349.641 254.281C331.676 274.819 310.555 275.376 306.347 275.249ZM291.305 207.852L291.305 207.845L291.363 160.756C291.363 160.755 291.363 160.753 291.363 160.751C291.37 159.801 291.184 158.86 290.815 157.984C290.445 157.107 289.9 156.314 289.213 155.656C288.527 154.997 287.713 154.485 286.821 154.153C285.934 153.822 284.99 153.675 284.044 153.721C254.815 154.636 225.58 154.911 196.338 154.547L192.941 154.504L195.198 157.043C212.744 176.778 230.267 196.276 247.767 215.538L248.222 216.038L248.897 216.029C257.317 215.92 265.737 215.75 274.157 215.519L274.158 215.519L284.09 215.241L284.091 215.241C286.017 215.185 287.844 214.383 289.19 213.004C290.536 211.626 291.294 209.779 291.305 207.852Z" fill="#FCFDFF" stroke="#FCFDFF" stroke-width="3"/>
+                                </svg>                                    
+                                <div class="ipad__jobCenter--loadingName">
+                                    <div class="ipad__jobCenter--loadingLogo-name">rep</div>
+                                    <div class="ipad__jobCenter--loadingLogo-subName">job center</div>
+                                </div>                                    
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.4/smooth-scrollbar.js" integrity="sha512-3f8C6NAQZv0YfwHFnjF231IIVcfZPnzL8EcHhNlzcoSRoEvC/iKDbtC+oYvL+0fRmEUMUYSvrZSE08TcRZYpgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./animations.js"></script>
     <script src="./app.js"></script>
+    <script src="./jobCenter.js"></script>
     <script type="text/javascript">
-        let tl = gsap.timeline({ paused: true });
-            tl.fromTo('.fadeText', { clipPath: 'polygon(50% 0%, 50% 100%, 50% 100%, 50% 0%)' }, { clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)', duration: 1.5, ease: 'power4.out' })
-
-            $('.ipad__lockScreen').mouseenter(function() {
-                tl.restart();
-            }).mouseleave(function() {
-                tl.reverse();
-            });
-    </script>
+        var Scrollbar = window.Scrollbar;
+        var scrollbar1;
+        var scrollbar2;
+        const options = {
+            'damping': .05,
+            'thumbMinSize': 15 
+        };
+        
+        scrollbar1 = Scrollbar.init(document.querySelector('#myScroolbar'), options);
+        scrollbar2 = Scrollbar.init(document.querySelector('#myScroolbar2'), options);
+    </script>    
 </body>
 </html>

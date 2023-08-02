@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('./animate.css');
 
 @font-face {
@@ -43,7 +44,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(70, 70, 70);
+    background-color: rgb(0, 0, 0);
     /* display: none; */
 }
 
@@ -264,7 +265,7 @@ body {
 .ipad__screen {
     width: 91.8%;
     height: 88.8%;
-    background: url("./imgs/background/bgLight.png") center center no-repeat; 
+    background: url("./imgs/background/bgDark.png") center center no-repeat; 
     background-size: 100% 100%;
     border-radius: 1.5vh;
     overflow: hidden;
@@ -312,7 +313,6 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    /* background-color: aquamarine; */
     backdrop-filter: blur(10px);
     z-index: 9999;
 }
@@ -462,11 +462,15 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
     /* background-color: antiquewhite; */
+    z-index: 1;
+}
+
+.ipad__mainScreen--wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9998;
 }
 
 .ipad__mainScreen--appsItem {
@@ -477,7 +481,29 @@ body {
 }
 
 .apps__icon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.appIcon-wrapper {
+    position: relative;
+    width: 5.5vh;
     height: 5.5vh;
+}
+
+.appIcon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 1.18vh;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 2;
     cursor: pointer;
 }
 
@@ -485,12 +511,8 @@ body {
     /* background-color: antiquewhite; */
     width: 100%;
     height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 6.3vw;
-    flex-direction: column;
-    margin-top: -14.1vh;
+    padding: 0 6.4vw;
+    margin-top: 7.2vh;
 }
 
 .ipad__mainScreen-appContent {
@@ -521,17 +543,16 @@ body {
     display: flex;
     align-items: center;
     gap: 1.45vh;
-    /* zoom: .9; */
 }
 
 .custom-zoomOut {
     animation-name: zoomOut;
-    animation-duration: 0.45s;
+    animation-duration: 0.65s;
 }
 
 .custom-fadeOutUp {
     animation-name: fadeOutUp;
-    animation-duration: 0.45s;
+    animation-duration: 0.65s;
 }
 
 .custom-fadeIn {
@@ -547,4 +568,1021 @@ body {
     color: var(--main-white-color);
     font-size: 1.4vh;
     font-weight: 400;
+}
+
+.ipad__jobCenter--screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: antiquewhite; */
+    z-index: 9999;
+    /* transform-origin: top left; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.ipad__jobCenter--wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* background: #000000; */
+}
+
+.ipad__jobCenter--loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #01031D;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    z-index: 9999;
+    /* gap: 6vh; */
+    pointer-events: none;
+}
+
+#logoLoading {
+    width: 17vh;
+    height: 17vh;
+    stroke: navy;
+    fill: white;
+    fill-opacity: 0;
+    stroke-width: 3px;
+    stroke-dasharray: 4500;
+    animation: draw 8s ease forwards, fill 0.5s ease forwards 1.75s, shadow 0.5s ease forwards 1.75s;
+}
+
+.ipad__jobCenter--loadingName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ipad__jobCenter--loadingLogo-name {
+    font-family: 'Kanit', sans-serif;
+    color: var(--main-white-color);
+    font-size: 9vh;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-top: -2.5vh;
+    margin-bottom: -3.25vh;
+}
+
+.ipad__jobCenter--loadingLogo-subName {
+    font-family: 'Kanit', sans-serif;
+    color: var(--main-white-color);
+    font-size: 4vh;
+    font-weight: 500;
+    color: #B4B4C0;
+    text-transform: capitalize;
+}
+
+.ipad__jobCenter--getStarted {
+    width: 100%;
+    height: 100%;
+    background: url("./imgs/background/bgJCStarted.png") center center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 4.2vw;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.getStarted__wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.ipad__jobCenter--getStarted--content {
+    width: 50%;
+    color: var(--main-white-color);
+    font-size: 3vh;
+    font-weight: 400;
+    margin-bottom: 3.7vh;
+    /* margin-top: 3.5vh; */
+}
+
+.ipad__jobCenter--getStarted--title {
+    /* width: 100%; */
+    color: var(--main-white-color);
+    font-size: 3vh;
+    font-weight: 400;
+    margin-bottom: 3.7vh;
+}
+
+.ipad__jobCenter--getStarted--content span {
+    color: #1BB3F9;
+}
+
+.ipad__jobCenter--getStarted--button {
+    padding: 0 1.85vw;
+    height: 5.5vh;
+    border-radius: 10vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vh;
+    background: #007AFF;
+    overflow: hidden;
+    position: relative;
+}
+
+.ripple {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+    animation: rippleEffect .5s ease;
+    border-radius: 50%;
+}
+
+.ipad__jobCenter--getStarted--button .ipad__jobCenter--getStarted--btn-content {
+    color: var(--main-white-color);
+    font-size: 2vh;
+    font-weight: 500;
+}
+
+.ipad__jobCenter--getStarted--button img {
+    height: 2.8vh;
+}
+
+#logoLoading, 
+.ipad__jobCenter--loadingName,
+.ipad__jobCenter--loginHeader,
+.ipad__jobCenter--loginContent--item {
+    opacity: 0;
+}
+
+.ipad__jobCenter--mainWelcome span {
+    opacity: 0;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+}
+
+.loader {
+  color: #ffffff;
+  font-size: .3vh;
+  text-indent: -99999em;
+  /* margin: 55px auto; */
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #007AFF;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #007AFF;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+
+.ipad__jobCenter--loginScreen {
+    width: 100%;
+    height: 100%;
+    background: url("./imgs/background/bgLogin.png") center center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 4.2vw;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.ipad__jobCenter--getStarted,
+.ipad__jobCenter--loginScreen {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.ipad__jobCenter--loginContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ipad__jobCenter--loginHeader {
+    color: var(--main-white-color);
+    font-size: 3vh;
+    font-weight: var(--main-bold-font);
+    /* margin-bottom: 3.7vh; */
+    text-align: center;
+    margin-bottom: 2.8vh;
+}
+
+.ipad__jobCenter--loginContent--item {
+    position: relative;
+    margin-bottom: 2.8vh;
+}
+
+.ipad__jobCenter--loginContent--item--label {
+    color: var(--main-white-color);
+    font-size: 1.8vh;
+    font-weight: var(--main-bold-font);
+    margin-bottom: 1.6vh;
+}
+
+.ipad__jobCenter--loginContent--item--input {
+    width: 100%;
+    height: 7.5vh;
+    /* border-radius: 2vw; */
+    /* glass background for input */
+    /* background: rgba(121, 121, 121, 0.2); */
+    background: none;
+    border-bottom: .1vh solid var(--main-white-color);
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+    padding-left: 3.25vw;
+    padding-right: .5vw;
+    color: var(--main-white-color);
+    outline: none;
+    font-size: 2vh;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    transition: .25s ease;
+}
+
+.ipad__jobCenter--loginContent--item i {
+    position: absolute;
+    top: 52%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    color: var(--main-white-color);
+    font-size: 2vh;
+}
+
+.ipad__jobCenter--mainScreen {
+    width: 100%;
+    height: 100%;
+    background: url("./imgs/background/bgJCMain.png") center center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* flex-direction: column; */
+    padding: 0 2vw;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.ipad__jobCenter--mainWelcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ipad__jobCenter--mainWelcome span {
+    /* text-transform: capitalize; */
+    font-weight: 550;
+    font-size: 6vh;
+    color: var(--main-white-color);
+}
+
+.ipad__jobCenter--mainBody {
+    width: 100%;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.ipad__jobCenter--header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.ipad__jobCenter--header-left {
+    font-weight: 500;
+    font-size: 2.4vh;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+}
+
+.user__avatar {
+    border-radius: 50%;
+    height: 5vh;
+    border: .15vh solid #7c7c7c;
+}
+
+.ipad__jobCenter--header-left span {
+    font-weight: var(--main-bold-font);
+}
+
+.ipad__jobCenter--header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25vh;
+}
+
+.notify__icon {
+    height: 2.4vh;
+}
+
+.notify__icon:hover {
+    animation: tada 1.5s ease infinite;
+}
+
+.ipad__jobCenter--filterWrapper {
+    margin-top: 2.6vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ipad__jobCenter--filterContent {
+    font-weight: 500;
+    font-size: 3.2vh;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+}
+
+.ipad__jobCenter--filterRight {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+}
+
+.search__icon {
+    position: absolute;
+    height: 1.8vh;
+    top: 1.15vh;
+    left: .63vw;
+}
+
+#searchJobs {
+    border-radius: .8vh;
+    width: 15vw;
+    height: 4vh;
+    background: #2B2B2B;
+    color: var(--main-white-color);
+    font-weight: var(--main-light-font);
+    font-size: 1.4vh;
+    border: none;
+    outline: none;
+    padding-left: 2.3vw;
+    padding-right: .7vw;
+}
+
+#searchJobs::placeholder {
+    color: #cdcdcd;
+    font-weight: var(--main-light-font);
+}
+
+.refresh__btn,
+.favorite__btn {
+    width: 2.25vw;
+    height: 4vh;
+    background: #2B2B2B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4vh;
+    color: #E7E7E7;
+    border-radius: .8vh;
+    font-weight: var(--main-light-font);
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.refresh__btn:hover,
+.favorite__btn:hover,
+.favorite__btn.show-favorites {
+    background: #3B3B3B;
+}
+
+.favorite__btn i {
+    transition: .25s ease;
+}
+
+.favorite__btn.show-favorites i {
+    color: #ff436c;
+}
+
+.ipad__jobCenter--mainItem {
+    width: 15.5vw;
+    height: 16.5vh;
+    position: relative;
+    padding: 1.9vh .95vw;
+}
+
+.mainItem-1 {
+    background: url("./imgs/jobCenterItem.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-2 {
+    background: url("./imgs/jobCenterItem2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-3 {
+    background: url("./imgs/jobCenterItem3.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-4 {
+    background: url("./imgs/jobCenterItem4.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-5 {
+    background: url("./imgs/jobCenterItem5.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-6 {
+    background: url("./imgs/jobCenterItem6.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-7 {
+    background: url("./imgs/jobCenterItem7.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mainItem-8 {
+    background: url("./imgs/jobCenterItem8.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.ipad__jobCenter--mainList {
+    margin-top: 4vh;
+    width: 102.35%;
+    height: 44vh;
+    /* background: #007AFF; */
+    position: relative;
+}
+
+.ipad__jobCenter--mainList .scroll-content {
+    display: flex !important;
+    /* align-items: center; */
+    align-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 4vh !important; 
+}
+
+.ipad__jobCenter--mainList .scrollbar-track {
+    width: .4vw !important;
+    background: #3B3B3B !important;
+}
+
+.ipad__jobCenter--mainList .scrollbar-thumb {
+    background: #dcdcdc !important;
+}
+
+.fadeTop, .fadeBottom {
+    position: absolute;
+    height: 4vh;
+    width: 100%;
+    z-index: 1000;
+}
+
+.fadeBottom {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(19, 19, 38, 0.8), rgba(31, 31, 31, 0.0));
+}
+
+.jobCenter__getLocation--btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.8vw;
+    height: 3.5vh;
+    border-radius: 2.5vh;
+    border: .2vh solid #4E4E4E;
+    background: #2B2B2B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6vh;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.jobCenter__getLocation--btn:hover {
+    background: #5b5b5b;
+}
+
+.jobCenter__getLocation--btn p {
+    color: var(--main-white-color);
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 1.4vh;
+}
+
+.jobCenter__getLocation--btn i {
+    color: var(--main-white-color);
+    font-size: 1.4vh;
+}
+
+.jobCenter__mainHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+}
+
+.jobCenter__mainIcon {
+    width: 2.55vw;
+    height: 4.4vh;
+    border-radius: .8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1F1F1F;
+}
+
+.jobCenter__mainIcon img {
+    height: 2.8vh;
+}
+
+.jobCenter__mainHeader--title {
+    color: var(--main-white-color);
+    font-size: 1.8vh;
+    font-weight: var(--main-bold-font);
+    margin-bottom: .4vh;
+    text-transform: capitalize;
+}
+
+.jobCenter__mainHeader--subTitle {
+    color: var(--main-white-color);
+    font-size: 1.2vh;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.jobCenter__mainBadge--list {
+    width: 100%;
+    margin-top: 1.6vh;
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+}
+
+.jobCenter__mainBadge {
+    /* min-width: 2vw; */
+    width: 2.5vw;
+    padding: 0 2.5vw;
+    height: 2.8vh;
+    border-radius: 2.4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6vh;
+    border: .15vh solid rgba(255, 255, 255, 0.40);
+    background: rgba(255, 255, 255, 0.20);
+
+}
+
+.jobCenter__mainBadge i {
+    color: var(--main-white-color);
+    font-size: 1.3vh;
+}
+
+.jobCenter__mainBadge .salary__content {
+    color: var(--main-white-color);
+    font-size: 1.3vh;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.jobCenter__mainFooter--wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    gap: 1.6vh;
+    justify-content: space-between;
+    padding: 0 1.05vw;
+}
+
+.jobCenter__mainFooter--left {
+    display: flex;
+    align-items: center;
+    gap: 1.6vh;
+}
+
+.jobCenter__mainFooter--maxPlayer,
+.jobCenter__mainFooter--countPlayer,
+.jobCenter__mainFooter--favorite {
+    display: flex;
+    align-items: center;
+    gap: .6vh;
+}
+
+.jobCenter__mainFooter--maxPlayer i,
+.jobCenter__mainFooter--countPlayer i {
+    font-size: 1.3vh;
+    color: #000;
+}
+
+.jobCenter__mainFooter--maxPlayer p,
+.jobCenter__mainFooter--countPlayer p,
+.jobCenter__mainFooter--favorite p {
+    font-size: 1.4vh;
+    font-weight: 500;
+    color: #000;
+}
+
+.jobCenter__mainFooter--favorite {
+    gap: .8vh;
+}
+
+#favoriteBtn {
+    font-size: 1.5vh;
+    color: #000;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+#favoriteBtn:hover,
+#favoriteBtn.favorite {
+    color: #ff436c;
+}
+
+.mainItem-3 *,
+.mainItem-3 .jobCenter__mainBadge i,
+.mainItem-3 .jobCenter__mainBadge .salary__content,
+.mainItem-5 *,
+.mainItem-5 .jobCenter__mainBadge i,
+.mainItem-5 .jobCenter__mainBadge .salary__content,
+.mainItem-6 *,
+.mainItem-6 .jobCenter__mainBadge i,
+.mainItem-6 .jobCenter__mainBadge .salary__content {
+    color: #000;
+}
+
+#noJobMessage,
+#noFavJobMessage {
+    position: absolute;
+    top: 14.5vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #7c7c7c;
+    font-size: 3vh;
+}
+
+.ipad__jobCenter--preloadWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ipad__jobCenter--preloadWrapper .loader {
+    font-size: .6vh;
+    margin-bottom: 2.8vh;
+}
+
+.ipad__jobCenter--preloadWrapper .loader:before,
+.ipad__jobCenter--preloadWrapper .loader:after {
+    background: #1F1F23;
+}
+
+.loader__content {
+    text-transform: capitalize;
+    font-size: 1.6vh;
+    color: var(--main-white-color);
+}
+
+.ellipsis-loader {
+    display: inline-flex;
+    align-items: center;
+    width: 1.5vw;
+    gap: .1vw;
+    /* height: .1vh; */
+}
+  
+.dot {
+    width: .25vw;
+    height: .5vh;
+    border-radius: 50%;
+    background: var(--main-white-color);
+    opacity: 0;
+    animation: loadingDots 1s infinite;
+}
+
+.dot-1 {
+    animation-delay: 0ms;
+}
+
+.dot-2 {
+    animation-delay: 250ms;
+}
+
+.dot-3 {
+    animation-delay: 500ms;
+}
+
+.ipad__notifyScreen--wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ipad__notifyScreen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("./imgs/background/bgJCMain.png") center center no-repeat;
+    background-size: 100% 100%;
+    /* backdrop-filter: blur(8px); */
+}
+
+.ipad__notifyScreen--body {
+    position: absolute;
+    top: 68.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 29vw;
+    height: 53.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6vh;
+}
+
+.ipad__notifyScreen--header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ipad__notifyScreen--header-title {
+    color: var(--main-white-color);
+    font-size: 2.2vh;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.ipad__notifyScreen--header-action {
+    width: 1.52vw;
+    height: 2.8vh;
+    border-radius: 50%;
+    background: rgba(19, 19, 19, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.6vh;
+    transition: .25s ease;
+    color: #b7b7b7;
+    position: relative;
+}
+
+.ipad__notifyScreen--header-action i {
+    transition: .25s ease;
+}
+
+.ipad__notifyScreen--header-action p {
+    position: absolute;
+    color: #b7b7b7;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 1.2vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+}
+
+.ipad__notifyScreen--header-action:hover {
+    width: 3.8vw;
+    border-radius: .6vh;
+}
+
+.ipad__notifyScreen--header-action:hover i {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ipad__notifyScreen--header-action:hover p {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ipad__notifyScreen--list {
+    width: 100%;
+    height: 44.5vh;
+    overflow: hidden;
+    /* background-color: #0D0D0D; */
+}
+
+.ipad__notifyScreen--list .scrollbar-track,
+.ipad__notifyScreen--list .scrollbar-thumb,
+.ipad__notifyScreen--list .scrollbar-track .scrollbar-track-y,
+.ipad__notifyScreen--list .scrollbar-thumb .scrollbar-thumb-y {
+    display: none !important;
+}
+
+.ipad__notifyScreen--item {
+    width: 100%;
+    height: 5.8vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: .95vw;
+    margin-bottom: .8vh;
+}
+
+.ipad__notifyScreen--item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(19, 19, 19, 0.85);
+    border-radius: 2.1vh;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+.ipad__notifyScreen--itemLeft {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    z-index: 1;
+}
+
+.ipad__notifyScreen--appIcon {
+    width: 3.6vh;
+    height: 3.6vh;
+    border-radius: .8vh;
+    background: var(--main-white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ipad__notifyScreen--itemContent-title {
+    color: var(--main-white-color);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 1.4vh;
+    font-weight: var(--main-bold-font);
+    text-transform: capitalize;
+    margin-bottom: .2vh;
+}
+
+.ipad__notifyScreen--itemContent-description {
+    color: var(--main-white-color);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 1.4vh;
+    width: 89%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: var(--main-light-font);
+}
+
+.ipad__notifyScreen--itemRight {
+    position: absolute;
+    top: 1.3vh;
+    right: 1.2vw;
+    z-index: 1;
+}
+
+.ipad__notifyScreen--itemRight-time {
+    color: rgba(160, 160, 160, 0.7);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 1.2vh;
+    font-weight: var(--main-light-font);
+}
+
+  
+@keyframes loadingDots {
+    0%, 80%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}  
+
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes draw {
+    0% {
+      stroke-dashoffset: 4500;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    0% {
+        fill-opacity: 0;
+        fill: var(--main-white-color);
+    }
+    100% {
+        fill-opacity: 1;
+        fill: var(--main-white-color);
+    }
+}
+
+@keyframes shadow {
+    0% {
+        filter: drop-shadow(0 0 0 navy);
+    }
+    100% {
+        filter: drop-shadow(0 0 4px navy);
+    }
+}
+
+@keyframes rippleEffect {
+    from {
+      width: 0px;
+      height: 0px;
+    }
+    to {
+      width: 150px;
+      height: 150px;
+      opacity: 0;
+    }
 }
