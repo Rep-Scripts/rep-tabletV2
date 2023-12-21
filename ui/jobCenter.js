@@ -282,27 +282,11 @@ $(function() {
         var event = $(this).attr("data-event");
         $.post("https://rep-tabletV2/CreateBlip", JSON.stringify({ event: event }));
 
-        $(".ipad__jobCenter--mainBody").fadeOut("fast");
-        $("#preload-screen").fadeIn("fast");
-        setTimeout(() => {
-            updateFetchingGroup();
+        REP.Tablet.Functions.managePreloadScreen(true, "Fetching Groups Data", "Fetching Groups Successfully!!!", () => {
             $(".ipad__jobCenter--groupWrapper").fadeIn("100");
-            setTimeout(() => {
-                $("#preload-screen").fadeOut("fast");
-            }, random(2000, 3000));
-        }, random(3500, 5000));
+        });
         
     });
-
-    function random(min, max) {
-        return Math.random() * (max - min) + min;
-    };
-
-    function updateFetchingGroup() {
-        $(".svg-container").fadeIn("fast");
-        $(".loader__content").text("Fetching Groups Successfully!!!");    
-        $(".ellipsis-loader, .loader").hide();
-    };
 
     window.addEventListener('message', function(e) {
         

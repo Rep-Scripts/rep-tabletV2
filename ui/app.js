@@ -311,6 +311,45 @@ $(function() {
             }
         }, 60);
     };
+
+    $(".ipad__groups--itemList").mousemove(function(e) {
+        $(".ipad__group--eles").each(function() {
+            const rect = $(this).offset(),
+                  x = e.pageX - rect.left,
+                  y = e.pageY - rect.top;
     
+            $(this).css("--mouse-x", `${x}px`);
+            $(this).css("--mouse-y", `${y}px`);
+        });
+    });    
+
+    REP.Tablet.Functions.random = (min, max) => {
+        return Math.random() * (max - min) + min;
+    };
+    
+    REP.Tablet.Functions.managePreloadScreen = (show, message, successMessage, afterSuccessAction) => {
+        if (show) {
+            $("#preload-screen").fadeIn("fast");
+            $(".loading__content").text(message);
+            $(".ipad__jobCenter--groupWrapper, .ipad__yourGroup--wrapper, .ipad__jobCenter--mainBody").fadeOut("fast");
+            $(".loader, .ellipsis-loader").fadeIn("fast");
+            $(".svg-container").hide();
+    
+            setTimeout(() => {
+                $(".svg-container").fadeIn("fast");
+                $(".loading__content").text(successMessage);
+                $(".ellipsis-loader, .loader").hide();
+    
+                setTimeout(() => {
+                    $("#preload-screen").fadeOut("fast");
+                    if (afterSuccessAction) {
+                        afterSuccessAction();
+                    }
+                }, REP.Tablet.Functions.random(2000, 3000));
+            }, REP.Tablet.Functions.random(3500, 5000));
+        } else {
+            $("#preload-screen").fadeOut("fast");
+        };
+    };
 });
 

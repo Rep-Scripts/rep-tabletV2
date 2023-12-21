@@ -1759,13 +1759,53 @@ body {
     margin-top: 2.6vh;
 }
 
+.ipad__groups--itemList:hover > .ipad__group--eles::after {
+    opacity: 1;
+} 
+
 .ipad__group--eles {
     width: 15.5vw;
     height: 13vh;
     position: relative;
     background: #2B2B2B;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    /* border: .15vh solid; */
     border-radius: 2.4vh;
+}
+
+.ipad__group--eles:hover::before {
+    opacity: 1;
+}
+
+.ipad__group--eles::before,
+.ipad__group--eles::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 500ms;
+    width: 100%;
+}
+
+.ipad__group--eles::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.1),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.ipad__group--eles::after {  
+    background: radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y), 
+      rgba(255, 255, 255, 0.3),
+      transparent 40%
+    );
+    z-index: 1;
 }
 
 .ipad__group-eles-header {
@@ -1891,6 +1931,11 @@ body {
 
 .ipad__groupes-eles-action i {
     font-size: 1.1vh;
+}
+
+.busy__groups .ipad__group--eles .ipad__groupes-eles-action {
+    opacity: .6;
+    cursor: default;
 }
 
 @keyframes loadingDots {
