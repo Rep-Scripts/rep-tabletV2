@@ -6,6 +6,7 @@ REP.Tablet.Notifications = {};
 REP.Tablet.Notifications.Custom = {};
 
 let clickCount = 0;
+let isAppOpen = false;
 
 $(function() {
     var isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -43,11 +44,6 @@ $(function() {
         });
     });
 
-    // if (isLoggedIn) {
-
-    // } else {
-
-    // }
 
     $(".ipad__jobCenter--getStarted--button").click(function(e) {
         e.preventDefault();
@@ -123,68 +119,70 @@ $(function() {
         }
     });
 
-    $("#login-btn").click(function(e) {
-        e.preventDefault();
-        let email = 'repscripts2023@gmail.com';
-        let password = 'rpsc2023123456780';
-        REP.Tablet.Functions.typeWriter(email, '#email', function() {
-            REP.Tablet.Functions.typeWriter(password, '#password', function() {
-                // Wait for 1 second after typing is done
-                setTimeout(function() {
-                    // animate the login header moving up and out of sight
-                    gsap.to(".ipad__jobCenter--loginHeader", {
-                        y: -100, 
-                        autoAlpha: 0,
-                        ease: "power2.out", 
-                        duration: 1,
-                    });
+    // $("#login-btn").click(function(e) {
+    //     e.preventDefault();
+    //     let email = 'repscripts2023@gmail.com';
+    //     let password = 'rpsc2023123456780';
+    //     REP.Tablet.Functions.typeWriter(email, '#email', function() {
+    //         REP.Tablet.Functions.typeWriter(password, '#password', function() {
+    //             // Wait for 1 second after typing is done
+    //             setTimeout(function() {
+    //                 // animate the login header moving up and out of sight
+    //                 gsap.to(".ipad__jobCenter--loginHeader", {
+    //                     y: -100, 
+    //                     autoAlpha: 0,
+    //                     ease: "power2.out", 
+    //                     duration: 1,
+    //                 });
     
-                    // animate the login content moving up and out of sight
-                    gsap.to(".ipad__jobCenter--loginContent--item", {
-                        y: -100, 
-                        autoAlpha: 0,
-                        stagger: 0.2, 
-                        ease: "power2.out", 
-                        duration: 1,
-                        onComplete: function() {
-                            gsap.to(".ipad__jobCenter--loginScreen", {
-                                autoAlpha: 0, // fade out effect
-                                ease: "power2.out", 
-                                duration: .8,
-                                onComplete: function() {
-                                    const welcome = $(".ipad__jobCenter--mainWelcome");
-                                    let textContent = "Welcome Back!";
-                                    welcome.text(textContent);
-                                    let splitText = textContent.split("").map(letter => `<span>${letter}</span>`).join("");
-                                    welcome.html(splitText);                               
-                                    $(".ipad__jobCenter--loginScreen").hide();
-                                    gsap.to([".ipad__jobCenter--mainWelcome span"], { opacity: 1, duration: 0, textTransform: "capitalize" });
-                                    gsap.from(".ipad__jobCenter--mainWelcome span", {
-                                        y: -20,
-                                        scale: 2,
-                                        autoAlpha: 0,
-                                        opacity: 1,
-                                        stagger: 0.1,
-                                        ease: "back.out(1.4)",
-                                        onComplete: function() {
-                                            gsap.to(".ipad__jobCenter--mainWelcome", { autoAlpha: 0, duration: 0.5, delay: 1.5,
-                                                onComplete: function() {
-                                                    $(".ipad__jobCenter--mainBody").show();
-                                                }
-                                            });
-                                        }
-                                    });
-                                }                                
-                            });
-                        }
-                    });
-                }, 1000); // Delay for 1 second
-            });
-        });
-    });
+    //                 // animate the login content moving up and out of sight
+    //                 gsap.to(".ipad__jobCenter--loginContent--item", {
+    //                     y: -100, 
+    //                     autoAlpha: 0,
+    //                     stagger: 0.2, 
+    //                     ease: "power2.out", 
+    //                     duration: 1,
+    //                     onComplete: function() {
+    //                         gsap.to(".ipad__jobCenter--loginScreen", {
+    //                             autoAlpha: 0, // fade out effect
+    //                             ease: "power2.out", 
+    //                             duration: .8,
+    //                             onComplete: function() {
+    //                                 const welcome = $(".ipad__jobCenter--mainWelcome");
+    //                                 let textContent = "Welcome Back!";
+    //                                 welcome.text(textContent);
+    //                                 let splitText = textContent.split("").map(letter => `<span>${letter}</span>`).join("");
+    //                                 welcome.html(splitText);                               
+    //                                 $(".ipad__jobCenter--loginScreen").hide();
+    //                                 gsap.to([".ipad__jobCenter--mainWelcome span"], { opacity: 1, duration: 0, textTransform: "capitalize" });
+    //                                 gsap.from(".ipad__jobCenter--mainWelcome span", {
+    //                                     y: -20,
+    //                                     scale: 2,
+    //                                     autoAlpha: 0,
+    //                                     opacity: 1,
+    //                                     stagger: 0.1,
+    //                                     ease: "back.out(1.4)",
+    //                                     onComplete: function() {
+    //                                         gsap.to(".ipad__jobCenter--mainWelcome", { autoAlpha: 0, duration: 0.5, delay: 1.5,
+    //                                             onComplete: function() {
+    //                                                 $(".ipad__jobCenter--mainBody").show();
+    //                                             }
+    //                                         });
+    //                                     }
+    //                                 });
+    //                             }                                
+    //                         });
+    //                     }
+    //                 });
+    //             }, 1000); // Delay for 1 second
+    //         });
+    //     });
+    // });
+
+    // $(".ipad__jobCenter--mainBody").show();
 
     $(".ipad__lockScreen").on("click", function(e) {
-        if (!$(e.target).is('.ipad__homeIndicator')) { 
+        if (!$(e.target).is('#lockScreen__homeIndicator')) { 
             clickCount++;
             if (clickCount == 2) {
                 $(this).addClass("custom-zoomOut");
@@ -200,14 +198,38 @@ $(function() {
         }
     });
     
-    $(".ipad__homeIndicator").on("click", function() {
+    $("#lockScreen__homeIndicator").on("click", function() {
         $(".ipad__lockScreen").addClass("custom-fadeOutUp");
         
         $(".ipad__lockScreen").one('animationend', function(){
             $(".ipad__lockScreen").removeClass("custom-fadeOutUp").hide();
             $(".ipad__mainScreen").addClass("custom-fadeIn").show();
-             REP.Tablet.Functions.animateMainScreen();
+            REP.Tablet.Functions.animateMainScreen();
         });
+    });
+
+    $("#main__homeIndicator").on("click", function() {
+        if(!isAppOpen) return; 
+    
+        var $appIconWrapper = $('#jobCenter').parent('.appIcon-wrapper');
+        
+        var $appScreen = $("#jobCenterApp");
+        var $appWrapper = $(".ipad__jobCenter--wrapper");
+        var $appIcon = $("#jobCenter-app");
+    
+        $appWrapper.addClass("animate__zoomOut");
+        $("#main__homeIndicator").hide();
+    
+        var tl = gsap.timeline();
+    
+        // Animate the app icon down-scaling
+        tl.to($appIconWrapper, { scale: 1.0, duration: 0.9, ease: "back.out(1.7)" });
+    
+        setTimeout(function(){
+            $appScreen.hide();
+            $appWrapper.removeClass("animate__zoomOut");
+            isAppOpen = false;
+        }, 500);
     });
 
     $(".ipad__header").on("click", function() {

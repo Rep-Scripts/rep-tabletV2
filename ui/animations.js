@@ -1,5 +1,3 @@
-var isAppOpen = false;
-
 $(function () {  
     let tl = gsap.timeline({ paused: true });
     tl.fromTo('.fadeText', { clipPath: 'polygon(50% 0%, 50% 100%, 50% 100%, 50% 0%)' }, { clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)', duration: 1.5, ease: 'power4.out' })
@@ -34,7 +32,11 @@ $(function () {
     
         // Create the timeline animation
         var tl = gsap.timeline({
-            onComplete: REP.Tablet.Functions.startLoadingAnimation // Start loading animation when the opening animation is complete
+            onComplete: function() {
+                // This will be executed when the timeline completes
+                $("#main__homeIndicator").fadeIn("100");
+                REP.Tablet.Functions.startLoadingAnimation(); // Start loading animation when the opening animation is complete
+            }
         });
     
         // Animate the app icon enlargement
@@ -55,30 +57,35 @@ $(function () {
         });
     
         isAppOpen = true;
-    });
+    });    
     
-    $(".ipad__jobCenter--container").dblclick(function(e) {
-        if(!isAppOpen) return; 
+    REP.Tablet.Animations.BottomSlideUp = function(Object, Timeout, Percentage) {
+        $(Object).css({'display':'block'}).animate({
+            bottom: Percentage+"%",
+        }, Timeout);
+    };
     
-        var $appIconWrapper = $('#jobCenter').parent('.appIcon-wrapper');
-        
-        var $appScreen = $("#jobCenterApp");
-        var $appWrapper = $(".ipad__jobCenter--wrapper");
-        var $appIcon = $("#jobCenter-app");
+    REP.Tablet.Animations.BottomSlideDown = function(Object, Timeout, Percentage) {
+        $(Object).css({'display':'block'}).animate({
+            bottom: Percentage+"%",
+        }, Timeout, function(){
+            $(Object).css({'display':'none'});
+        });
+    };
     
-        $appWrapper.addClass("animate__zoomOut");
+    REP.Tablet.Animations.TopSlideDown = function(Object, Timeout, Percentage) {
+        $(Object).css({'display':'block'}).animate({
+            top: Percentage+"%",
+        }, Timeout);
+    };
     
-        var tl = gsap.timeline();
-    
-        // Animate the app icon down-scaling
-        tl.to($appIconWrapper, { scale: 1.0, duration: 0.9, ease: "back.out(1.7)" });
-    
-        setTimeout(function(){
-            $appScreen.hide();
-            $appWrapper.removeClass("animate__zoomOut");
-            isAppOpen = false;
-        }, 500);
-    });
+    REP.Tablet.Animations.TopSlideUp = function(Object, Timeout, Percentage) {
+        $(Object).css({'display':'block'}).animate({
+            top: Percentage+"%",
+        }, Timeout, function(){
+            $(Object).css({'display':'none'});
+        });
+    };
 
     REP.Tablet.Functions.startLoadingAnimation = () => {
         var timeline = gsap.timeline();

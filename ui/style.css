@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/cooltipz-css@2.3.0/cooltipz.css');
 @import url('./animate.css');
 
 @font-face {
@@ -348,13 +349,27 @@ body {
     background: var(--main-white-color);
     border-radius: 10vw;
     cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1;
+    z-index: 999999;
     transition: .25s ease;
 }
 
-.ipad__lockScreen:hover .ipad__homeIndicator {
+.ipad__screen #main__homeIndicator {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9998;
+}
+
+.ipad__screen:hover #main__homeIndicator {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ipad__lockScreen #lockScreen__homeIndicator {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ipad__lockScreen:hover #lockScreen__homeIndicator {
     opacity: 1;
     visibility: visible;
 }
@@ -912,6 +927,22 @@ body {
     text-transform: capitalize;
 }
 
+.user__wrapper {
+    position: relative;
+}
+
+.online {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.25vh;
+    height: 1.25vh;
+    border-radius: 50%;
+    background: #07e607;
+    border: .15vh solid #7c7c7c;
+    z-index: 9999;
+}
+
 .user__avatar {
     border-radius: 50%;
     height: 5vh;
@@ -936,7 +967,8 @@ body {
     animation: tada 1.5s ease infinite;
 }
 
-.ipad__jobCenter--filterWrapper {
+.ipad__jobCenter--filterWrapper,
+.ipad__groups--actionWrapper {
     margin-top: 2.6vh;
     width: 100%;
     display: flex;
@@ -944,14 +976,17 @@ body {
     align-items: center;
 }
 
-.ipad__jobCenter--filterContent {
+.ipad__jobCenter--filterContent,
+.ipad__groups--actionContent {
     font-weight: 500;
     font-size: 3.2vh;
     color: var(--main-white-color);
     text-transform: capitalize;
 }
 
-.ipad__jobCenter--filterRight {
+.ipad__jobCenter--filterRight,
+.ipad__groups--actionRight,
+.ipad__groups--itemRight {
     position: relative;
     display: flex;
     align-items: center;
@@ -965,7 +1000,8 @@ body {
     left: .63vw;
 }
 
-#searchJobs {
+#searchJobs,
+#searchIdleGroup {
     border-radius: .8vh;
     width: 15vw;
     height: 4vh;
@@ -979,13 +1015,15 @@ body {
     padding-right: .7vw;
 }
 
-#searchJobs::placeholder {
+#searchJobs::placeholder,
+#searchIdleGroup::placeholder {
     color: #cdcdcd;
     font-weight: var(--main-light-font);
 }
 
 .refresh__btn,
-.favorite__btn {
+.favorite__btn,
+.filter__btn {
     width: 2.25vw;
     height: 4vh;
     background: #2B2B2B;
@@ -1002,7 +1040,8 @@ body {
 
 .refresh__btn:hover,
 .favorite__btn:hover,
-.favorite__btn.show-favorites {
+.favorite__btn.show-favorites,
+.filter__btn:hover {
     background: #3B3B3B;
 }
 
@@ -1514,6 +1553,180 @@ body {
     font-weight: var(--main-light-font);
 }
 
+.__tablet--notification-container,
+.__tablet--notification-container-new {
+    position: absolute;
+    height: 5.8vh;
+    width: 42vh;
+    display: flex;
+    align-items: center;
+    padding-left: .95vw;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 1%;
+    overflow: hidden;
+    background: rgba(19, 19, 19, 0.6);
+    border-radius: 2.1vh;
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+}
+
+.ipad__notifyScreen--btn {
+    position: absolute;
+    top: 3vh;
+    right: 1.2vw;
+    display: flex;
+    align-items: center;
+    gap: .25vw;
+}
+
+.ipad__notifyScreen--btn > * {
+    transition: .25s ease;
+}
+
+.notification-accept {
+    font-size: 1.6vh;
+    color: rgb(39, 208, 39);
+    cursor: pointer;
+}   
+
+.notification-accept:hover {
+    color: rgb(34, 233, 34);
+}
+
+.notification-deny {
+    font-size: 1.6vh;
+    color: rgb(200, 48, 48);
+    cursor: pointer;
+}
+
+.notification-deny:hover {
+    color: rgb(238, 33, 33);
+}
+
+.new {
+    margin-top: .4vh;
+}
+
+.ipad__notifyScreen--itemRight-time.new {
+    margin-top: 0;
+}
+
+.ft-green-tick {
+    height: 6.3vh;
+    margin-bottom: 2.8vh;
+}
+
+.tick {
+    stroke-opacity: 0;
+    stroke-dasharray: 29px;
+    stroke-dashoffset: 29px;
+    animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
+    animation-delay: .6s;
+}
+
+.circle {
+    fill-opacity: 0;
+    stroke: #219a00;
+    stroke-width: 16px;
+    transform-origin: center;
+    transform: scale(0);
+    animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;
+}
+
+.ipad__jobCenter--groupWrapper {
+    width: 100%;
+    position: relative;
+}
+
+.ipad__groups--actionLeft {
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+}
+
+.ipad__groups--actionLeft i {
+    font-weight: 500;
+    font-size: 4vh;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+}
+
+.ipad__groups--actionBtn {
+    padding: 0 1vw;
+    height: 4vh;
+    background: #2B2B2B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1vh;
+    border-radius: .8vh;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: .25s ease;
+    position: relative;
+}
+
+.ipad__groups--actionBtn span,
+.ipad__groups--actionBtn i {
+    font-size: 1.4vh;
+    color: #E7E7E7;
+    font-weight: var(--main-light-font);
+}
+
+.create__btn {
+    background: #246412;
+}
+
+.create__btn:hover {
+    color: var(--main-white-color);
+    background: #32aa0b;
+}
+
+.checkOut__btn {
+    background: #6d0909;
+}
+
+.checkOut__btn:hover {
+    color: var(--main-white-color);
+    background: #b90a0a;
+}
+
+.ipad__groups--bodyWrapper {
+    width: 100%;
+    margin-top: 2.6vh;
+}
+
+.ipad__groups--item {
+    width: 100%;
+}
+
+.ipad__groups--item-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ipad__groups--item-content {
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+    font-size: 1.8vh;
+    font-weight: 500;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+}
+
+.ipad__groups--item-content i {
+    font-size: 2vh;
+}
+
+.ipad__groups--itemList {
+    width: 100%;
+    
+}
   
 @keyframes loadingDots {
     0%, 80%, 100% {
@@ -1584,5 +1797,28 @@ body {
       width: 150px;
       height: 150px;
       opacity: 0;
+    }
+}
+
+@keyframes grow {
+    60% {
+        transform: scale(.8);
+        stroke-width: 4px;
+        fill-opacity: 0;
+    }
+    100% {
+        transform: scale(.9);
+        stroke-width: 8px;
+        fill-opacity: 1;
+        fill: #219a00;
+    }
+}
+
+@keyframes draw {
+    0%, 100% {
+        stroke-opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
     }
 }
