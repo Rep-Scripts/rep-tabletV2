@@ -312,17 +312,6 @@ $(function() {
         }, 60);
     };
 
-    $(".ipad__groups--itemList").mousemove(function(e) {
-        $(".ipad__group--eles").each(function() {
-            const rect = $(this).offset(),
-                  x = e.pageX - rect.left,
-                  y = e.pageY - rect.top;
-    
-            $(this).css("--mouse-x", `${x}px`);
-            $(this).css("--mouse-y", `${y}px`);
-        });
-    });    
-
     REP.Tablet.Functions.random = (min, max) => {
         return Math.random() * (max - min) + min;
     };
@@ -350,6 +339,16 @@ $(function() {
         } else {
             $("#preload-screen").fadeOut("fast");
         };
+    };
+
+    REP.Tablet.Functions.togglePopup = (popupSelector, button) => {
+        if (button.hasClass("active")) {
+            button.removeClass("active");
+            $(popupSelector).fadeOut("100");
+        } else {
+            button.addClass("active");
+            $(popupSelector).fadeIn("100");
+        }
     };
 });
 

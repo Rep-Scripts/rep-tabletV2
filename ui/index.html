@@ -447,8 +447,55 @@
                                                         <img src="./imgs/searchIcon.png" alt="" class="search__icon">
                                                         <input type="text" placeholder="Find idle group..." id="searchIdleGroup" name="searchIdleGroup" autocomplete="off">
                                                     </div>
-                                                    <div class="filter__btn" data-cooltipz-dir="bottom" aria-label="Filters">
+                                                    <div class="filter__btn filter__idle--btn" data-cooltipz-dir="bottom" aria-label="Filters">
                                                         <i class="fa-solid fa-filter"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__popup--overlay" id="filterPopupIdle" style="display: none;">
+                                                <div class="filter__popup--menu">
+                                                    <div class="filter__popup--header">
+                                                        <div class="filter__popup--headerLeft">
+                                                            <i class="fa-solid fa-filter"></i>
+                                                            <span>Filters</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter__popup--body">
+                                                        <div class="filter__popup--item">
+                                                            <div class="filter__popup--itemHeader">Sort By G.Name</div>
+                                                            <div class="filter__popup--itemBody">
+                                                                <span class="filter__popup--itemContent">from a - z</span>
+                                                                <label class="switch">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="filter__popup--itemBody">
+                                                                <span class="filter__popup--itemContent">from z - a</span>
+                                                                <label class="switch">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="filter__popup--item">
+                                                            <div class="filter__popup--itemHeader">groups are available</div>
+                                                            <div class="filter__popup--itemBody">
+                                                                <span class="filter__popup--itemContent">turn on / off</span>
+                                                                <label class="switch">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter__popup--action">
+                                                        <div class="filter__popup--actionBtn filter__reset">
+                                                            reset
+                                                        </div>
+                                                        <div class="filter__popup--actionBtn filter__apply">
+                                                            apply
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -850,8 +897,45 @@
                                                         <img src="./imgs/searchIcon.png" alt="" class="search__icon">
                                                         <input type="text" placeholder="Find busy group..." id="searchBusyGroup" name="searchBusyGroup" autocomplete="off">
                                                     </div>
-                                                    <div class="filter__btn" data-cooltipz-dir="bottom" aria-label="Filters">
+                                                    <div class="filter__btn filter__busy--btn" data-cooltipz-dir="bottom" aria-label="Filters">
                                                         <i class="fa-solid fa-filter"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__popup--overlay" id="filterPopupBusy" style="display: none;">
+                                                <div class="filter__popup--menu">
+                                                    <div class="filter__popup--header">
+                                                        <div class="filter__popup--headerLeft">
+                                                            <i class="fa-solid fa-filter"></i>
+                                                            <span>Filters</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter__popup--body">
+                                                        <div class="filter__popup--item">
+                                                            <div class="filter__popup--itemHeader">Sort By G.Name</div>
+                                                            <div class="filter__popup--itemBody">
+                                                                <span class="filter__popup--itemContent">from a - z</span>
+                                                                <label class="switch">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="filter__popup--itemBody">
+                                                                <span class="filter__popup--itemContent">from z - a</span>
+                                                                <label class="switch">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter__popup--action">
+                                                        <div class="filter__popup--actionBtn filter__reset">
+                                                            reset
+                                                        </div>
+                                                        <div class="filter__popup--actionBtn filter__apply">
+                                                            apply
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
