@@ -1,3 +1,0 @@
-;/*FB_PKG_DELIM*/
-
-__d("LSDeleteCommunityChannel",["LSDeleteThread"],(function(a,b,c,d,e,f){function a(){var a=arguments,c=a[a.length-1];c.n;var d=[];return c.seq([function(d){return c.seq([function(b){return c.fe(c.ftr(c.db.table(167).fetch(),function(b){return c.i64.eq(b.threadId,a[0])}),function(a){return a["delete"]()})},function(d){return c.sp(b("LSDeleteThread"),a[0],!1)}])},function(a){return c.resolve(d)}])}c=a;f["default"]=c}),66);
