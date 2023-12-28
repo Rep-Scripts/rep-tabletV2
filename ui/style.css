@@ -1006,6 +1006,11 @@ body {
     /* z-index: 9999; */
 }
 
+.ipad__yourGroupTasks--wrapper .ipad__groups--itemRight {
+    gap: 1vh;
+    zoom: .85;
+}
+
 .search__icon {
     position: absolute;
     height: 1.8vh;
@@ -1027,6 +1032,7 @@ body {
     outline: none;
     padding-left: 2.3vw;
     padding-right: .7vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #searchJobs::placeholder,
@@ -1038,7 +1044,8 @@ body {
 
 .refresh__btn,
 .favorite__btn,
-.filter__btn {
+.filter__btn,
+.ipad__time--item {
     width: 2.25vw;
     height: 4vh;
     background: #2B2B2B;
@@ -1052,6 +1059,7 @@ body {
     cursor: pointer;
     transition: .25s ease;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .refresh__btn:hover,
@@ -1692,6 +1700,7 @@ body {
     text-transform: capitalize;
     transition: .25s ease;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .ipad__groups--actionBtn span,
@@ -1701,11 +1710,14 @@ body {
     font-weight: var(--main-light-font);
 }
 
-.create__btn {
+.create__btn,
+.ready__btn {
     background: #246412;
 }
 
-.create__btn:hover {
+.create__btn:hover,
+.ready__btn:hover,
+.ready__btn.active {
     color: var(--main-white-color);
     background: #32aa0b;
 }
@@ -1793,6 +1805,7 @@ body {
     border-radius: 50%;
     height: 4.5vh;
     border: .15vh solid #7c7c7c;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .leader__name--wrapper {
@@ -2097,7 +2110,8 @@ input:checked + .slider:before {
     background: #26c000;
 }
 
-.ipad__yourGroup--wrapper .ipad__groups--item-header .ipad__groups--itemRight {
+.ipad__yourGroup--wrapper .ipad__groups--item-header .ipad__groups--itemRight,
+.ipad__groups--itemContent {
     color: var(--main-white-color);
     font-size: 1.4vh;
     text-transform: capitalize;
@@ -2107,6 +2121,33 @@ input:checked + .slider:before {
 .ipad__yourGroup--wrapper .ipad__groups--item-header .ipad__groups--itemRight span {
     color: #07e607;
     font-weight: var(--main-bold-font);
+}
+
+.ipad__yourGroupTasks--wrapper .ipad__groups--itemRight {
+    color: var(--main-white-color);
+    font-size: 2vh;
+}
+
+.ipad__groups--itemContent {
+    position: absolute;
+    bottom: 2.75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vh;
+}
+
+.ipad__groups--itemContent span.not__done {
+    font-weight: var(--main-bold-font);
+    color: #F8CA48;
+}
+
+.ipad__groups--itemContent span.done {
+    font-weight: var(--main-bold-font);
+    color: #07e607;
 }
 
 .ipad__yourGroup--list {
@@ -2201,8 +2242,8 @@ input:checked + .slider:before {
 .ipad__yourGroup--action {
     position: absolute;
     /* bottom: 1.05vh; */
-    bottom: -.6vh;
-    padding: 0 .95vw;
+    bottom: -.4vh;
+    padding: 0 .8vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2213,8 +2254,19 @@ input:checked + .slider:before {
 }
 
 .ipad__yourGroup--action i {
-    font-size: 1.65vh;
+    font-size: 1.45vh;
     cursor: pointer;
+}
+
+.ipad__yourGroup--action div {
+    width: 2.5vh;
+    height: 2.5vh;
+    background: rgba(68, 68, 68, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .invite__leader {
@@ -2226,7 +2278,7 @@ input:checked + .slider:before {
 }
 
 .ipad__yourGroup--item.member:hover .ipad__yourGroup--action {
-    bottom: 1.05vh;
+    bottom: 1.5vh;
     opacity: 1;
     visibility: visible;
 } 
@@ -2246,6 +2298,50 @@ input:checked + .slider:before {
     gap: 1.2vh;
 }
 
+.hihi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2vh;
+}
+
+.left__line,
+.right__line {
+    width: 14.5vw;
+    height: .35vh;
+    border-radius: 2.4vh;
+    margin: 0 1vw;
+    position: relative;
+}
+
+.left__line::after,
+.right__line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: .85vh;
+    height: .95vh;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: rgb(66, 66, 66);
+}
+
+.left__line {
+    background: linear-gradient(to right, transparent, rgb(43, 43, 43));
+}
+
+.left__line::after {
+    right: -1.05vw;
+}
+
+.right__line::after {
+    left: -.58vw;
+}
+
+.right__line {
+    background: linear-gradient(to left, transparent, rgb(43, 43, 43));
+}
+
 .ipad__yourGroup--item.invite__more {
     background: rgba(43, 43, 43, 0.4);
     cursor: pointer;
@@ -2261,6 +2357,204 @@ input:checked + .slider:before {
     font-size: 2vh;
     color: #797979;
     text-transform: capitalize;
+}
+
+.request__modal--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: linear-gradient(128deg, rgba(0, 0, 0, 0.4) 29.14%, rgba(46, 48, 53, 0.4) 95.51%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sad,
+.sad2,
+.sad3,
+.sad4 {
+    background: linear-gradient(128deg, rgba(0, 0, 0, 0.4) 29.14%, rgba(54, 9, 9, 0.4) 95.51%);
+}
+
+.love,
+.love2 {
+    background: linear-gradient(128deg, rgba(0, 0, 0, 0.4) 29.14%, rgba(54, 51, 9, 0.4) 95.51%);
+}
+
+.request__modal--wrapper {
+    padding: 2vh 1.25vw;
+    border-radius: .8vh;
+    /* border: .15vh solid rgba(255, 255, 255, 0.60); */
+    background: linear-gradient(162deg, rgba(53, 53, 53, 0.8) 12.44%, rgba(19, 19, 19, 0.8) 108.25%);
+    box-shadow: 36px 40px 56px 0 rgba(0, 0, 0, 0.19);
+    zoom: .95;
+}
+
+.request__modal--header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    margin-bottom: 2.25vh;
+}
+
+.request__modal--header h2 {
+    color: var(--main-white-color);
+    font-size: 1.8vh;
+    font-weight: 500;
+}
+
+.request__modal--header h2 .request__name {
+    color: gold;
+    text-shadow: 0 0 10px gold;
+}
+
+.request__modal--header .request__emoji {
+    height: 4.5vh;
+}
+
+.request__modal--action {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 1vh;
+}
+
+.request__modal--actionBtn {
+    width: 5vw;
+    height: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .8vh;
+    cursor: pointer;
+    transition: .25s ease;
+    font-size: 1.4vh;
+    font-weight: 600;
+    text-transform: capitalize;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.request__modal--actionBtn.request__confirm {
+    color: #07e607;
+    background: #034903;
+}
+
+.request__modal--actionBtn.request__confirm:hover {
+    background: #045f04;
+}
+
+.request__modal--actionBtn.request__cancel {
+    color: #e60707;
+    background: #520404;
+}
+
+.request__modal--actionBtn.request__cancel:hover {
+    background: #6b0505;
+}
+
+.disband__text {
+    color: #ff0a0a;
+    text-shadow: 0 0 10px #ff0a0a;
+}
+
+.spinner.spin {
+    animation: spin 1.3s ease-in-out infinite;
+}
+
+.ipad__yourGroupTasks--list {
+    width: 100%;
+    display: flex;
+    align-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 3vh !important; 
+}
+
+.ipad__yourGroupTasks--item {
+    width: 48.34%;
+    height: 11vh;
+    position: relative;
+    background: rgba(43, 43, 43, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    /* border: .15vh solid; */
+    border-radius: 2.4vh;
+    padding: 0 1.6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ipad__yourGroupTasks--left {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .8vh;
+    width: 75%;
+}
+
+.ipad__yourGroupTasks--left div:nth-of-type(1) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5vh;
+}
+
+.ipad__yourGroupTasks--left div:nth-of-type(1) i {
+    color: #F8CA48;
+    text-shadow: 0 0 10px #F8CA48;
+    font-size: 2vh;
+}
+
+.ipad__yourGroupTasks--left div:nth-of-type(2) i {
+    color: var(--main-white-color);
+    font-size: 1.8vh;
+    cursor: pointer;
+}
+
+.ipad__yourGroupTasks--headerContent {
+    color: #F8CA48;
+    text-shadow: 0 0 10px #F8CA48;
+    font-size: 1.5vh;
+    font-weight: var(--main-bold-font);
+    letter-spacing: .1vw;
+}
+
+.ipad__yourGroupTasks--description {
+    color: var(--main-white-color);
+    font-size: 1.7vh;
+    font-weight: var(--main-light-font);
+}
+
+.ipad__yourGroupTasks--content {
+    color: #b7b7b7;
+    font-size: 1.5vh;
+    font-weight: var(--main-light-font);
+    line-height: 2.2vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+#taskBarProgress,
+#taskBarProgress2,
+#taskBarProgress3,
+#taskBarProgress4,
+#taskBarProgress5,
+#taskBarProgress6 {
+    width: 7vh;
+    justify-content: center;
+    height: 7vh;
+}
+
+.total__item {
+    display: flex;
+    align-items: center;
+    gap: .7vh;
 }
 
 @keyframes loadingDots {
@@ -2362,5 +2656,11 @@ input:checked + .slider:before {
     to {
         transform: scale(2);
         opacity: 0;
+    }
+}
+
+@keyframes spin {
+    100%{
+        transform: rotate(360deg);
     }
 }

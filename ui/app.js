@@ -7,6 +7,8 @@ REP.Tablet.Notifications.Custom = {};
 
 let clickCount = 0;
 let isAppOpen = false;
+let notReadyButtonAdded = false;
+let transitionTimeout;
 
 $(function() {
     var isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -119,65 +121,65 @@ $(function() {
         }
     });
 
-    // $("#login-btn").click(function(e) {
-    //     e.preventDefault();
-    //     let email = 'repscripts2023@gmail.com';
-    //     let password = 'rpsc2023123456780';
-    //     REP.Tablet.Functions.typeWriter(email, '#email', function() {
-    //         REP.Tablet.Functions.typeWriter(password, '#password', function() {
-    //             // Wait for 1 second after typing is done
-    //             setTimeout(function() {
-    //                 // animate the login header moving up and out of sight
-    //                 gsap.to(".ipad__jobCenter--loginHeader", {
-    //                     y: -100, 
-    //                     autoAlpha: 0,
-    //                     ease: "power2.out", 
-    //                     duration: 1,
-    //                 });
+    $("#login-btn").click(function(e) {
+        e.preventDefault();
+        let email = 'repscripts2023@gmail.com';
+        let password = 'rpsc2023123456780';
+        REP.Tablet.Functions.typeWriter(email, '#email', function() {
+            REP.Tablet.Functions.typeWriter(password, '#password', function() {
+                // Wait for 1 second after typing is done
+                setTimeout(function() {
+                    // animate the login header moving up and out of sight
+                    gsap.to(".ipad__jobCenter--loginHeader", {
+                        y: -100, 
+                        autoAlpha: 0,
+                        ease: "power2.out", 
+                        duration: 1,
+                    });
     
-    //                 // animate the login content moving up and out of sight
-    //                 gsap.to(".ipad__jobCenter--loginContent--item", {
-    //                     y: -100, 
-    //                     autoAlpha: 0,
-    //                     stagger: 0.2, 
-    //                     ease: "power2.out", 
-    //                     duration: 1,
-    //                     onComplete: function() {
-    //                         gsap.to(".ipad__jobCenter--loginScreen", {
-    //                             autoAlpha: 0, // fade out effect
-    //                             ease: "power2.out", 
-    //                             duration: .8,
-    //                             onComplete: function() {
-    //                                 const welcome = $(".ipad__jobCenter--mainWelcome");
-    //                                 let textContent = "Welcome Back!";
-    //                                 welcome.text(textContent);
-    //                                 let splitText = textContent.split("").map(letter => `<span>${letter}</span>`).join("");
-    //                                 welcome.html(splitText);                               
-    //                                 $(".ipad__jobCenter--loginScreen").hide();
-    //                                 gsap.to([".ipad__jobCenter--mainWelcome span"], { opacity: 1, duration: 0, textTransform: "capitalize" });
-    //                                 gsap.from(".ipad__jobCenter--mainWelcome span", {
-    //                                     y: -20,
-    //                                     scale: 2,
-    //                                     autoAlpha: 0,
-    //                                     opacity: 1,
-    //                                     stagger: 0.1,
-    //                                     ease: "back.out(1.4)",
-    //                                     onComplete: function() {
-    //                                         gsap.to(".ipad__jobCenter--mainWelcome", { autoAlpha: 0, duration: 0.5, delay: 1.5,
-    //                                             onComplete: function() {
-    //                                                 $(".ipad__jobCenter--mainBody").show();
-    //                                             }
-    //                                         });
-    //                                     }
-    //                                 });
-    //                             }                                
-    //                         });
-    //                     }
-    //                 });
-    //             }, 1000); // Delay for 1 second
-    //         });
-    //     });
-    // });
+                    // animate the login content moving up and out of sight
+                    gsap.to(".ipad__jobCenter--loginContent--item", {
+                        y: -100, 
+                        autoAlpha: 0,
+                        stagger: 0.2, 
+                        ease: "power2.out", 
+                        duration: 1,
+                        onComplete: function() {
+                            gsap.to(".ipad__jobCenter--loginScreen", {
+                                autoAlpha: 0, // fade out effect
+                                ease: "power2.out", 
+                                duration: .8,
+                                onComplete: function() {
+                                    const welcome = $(".ipad__jobCenter--mainWelcome");
+                                    let textContent = "Welcome Back!";
+                                    welcome.text(textContent);
+                                    let splitText = textContent.split("").map(letter => `<span>${letter}</span>`).join("");
+                                    welcome.html(splitText);                               
+                                    $(".ipad__jobCenter--loginScreen").hide();
+                                    gsap.to([".ipad__jobCenter--mainWelcome span"], { opacity: 1, duration: 0, textTransform: "capitalize" });
+                                    gsap.from(".ipad__jobCenter--mainWelcome span", {
+                                        y: -20,
+                                        scale: 2,
+                                        autoAlpha: 0,
+                                        opacity: 1,
+                                        stagger: 0.1,
+                                        ease: "back.out(1.4)",
+                                        onComplete: function() {
+                                            gsap.to(".ipad__jobCenter--mainWelcome", { autoAlpha: 0, duration: 0.5, delay: 1.5,
+                                                onComplete: function() {
+                                                    $(".ipad__jobCenter--mainBody").show();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }                                
+                            });
+                        }
+                    });
+                }, 1000); // Delay for 1 second
+            });
+        });
+    });
 
     // $(".ipad__jobCenter--mainBody").show();
 
@@ -350,5 +352,69 @@ $(function() {
             $(popupSelector).fadeIn("100");
         }
     };
+
+    REP.Tablet.Functions.openModal = (text, type) => {
+        $(".request__modal--header h2").html(text);
+    
+        const $overlay = $(".request__modal--overlay");
+        const currentType = $overlay.data("type");
+
+        if (currentType) {
+            $overlay.removeClass(currentType);
+        }
+
+        $overlay.addClass(type).data("type", type);
+
+        if (type) {
+            $(".request__emoji").attr("src", `./imgs/icons/${type}.gif`).show();
+            $(".request__modal--actionBtn.request__confirm").show();
+            $(".request__modal--actionBtn.request__cancel").text('Cancel');
+        } else {
+            $(".request__emoji").hide();
+            $(".request__modal--actionBtn.request__confirm").hide();
+            $(".request__modal--actionBtn.request__cancel").text('Close');
+        }
+    
+        $overlay.fadeIn("100")
+            .find(".request__modal--wrapper")
+            .removeClass("animate__zoomOut")
+            .addClass("animate__zoomIn");
+    };        
+
+    REP.Tablet.Functions.closeModal = () => {
+        $(".request__modal--wrapper").addClass("animate__zoomOut").removeClass("animate__zoomIn");
+        setTimeout(() => {
+            $(".request__modal--overlay").fadeOut("100");
+        }, 250);
+    };
+
+    $("[id^='taskBarProgress']").each(function(index, element) {
+        var progressBar = new ProgressBar.Circle(element, {
+            strokeWidth: 7,
+            duration: 2400,
+            easing: 'bounce',
+            color: "#F8CA48",
+            trailColor: "#383838",
+            trailWidth: 10,
+            text: {
+                value: "0 / 1",
+                className: "",
+                style: {
+                    color: "#fff",
+                    position: "absolute",
+                    fontSize: "1.4vh",
+                    left: "50%",
+                    top: "50%",
+                    padding: 0,
+                    margin: 0,
+                    // Note: transform cannot be nested in style, the correct format is below
+                    transform: "translate(-50%, -50%)"
+                },
+            },
+        });
+    
+        // Animate the progress bar to 50%
+        progressBar.animate(0.5); // Number from 0.0 to 1.0
+    });    
 });
 
