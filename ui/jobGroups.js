@@ -89,5 +89,29 @@ $(function() {
         const taskDescription = $(this).closest('.ipad__yourGroupTasks--left').find('.ipad__yourGroupTasks--content').text();
         REP.Tablet.Functions.openModal(taskDescription);
     });
-    
+
+    // $(document).on("click", ".ipad__invite--overlay")
+
+    $(document).on("click", ".invite__more", function(e) {
+        e.preventDefault();
+        $(".ipad__invite--overlay").fadeIn("100")
+            .find(".ipad__invite--wrapper")
+            .removeClass("animate__zoomOut")
+            .addClass("animate__zoomIn");
+
+    });
+
+    $(document).on("click", ".ipad__invite--close", function(e) {
+        e.preventDefault();
+        $(".ipad__invite--wrapper").addClass("animate__zoomOut").removeClass("animate__zoomIn");
+        setTimeout(() => {
+            $(".ipad__invite--overlay").fadeOut("100");
+        }, 250);
+    })
+      
+    $(document).on("click", ".ipad__invite--btn", function(e) {
+        $(".ipad__invite--btn").addClass("active").prop("disabled", true);
+        $(".ipad__invite--btn span").text("Invited");
+        $(".ipad__invite--btn i").removeClass("bx-send").addClass("bx-check");
+    });
 });
